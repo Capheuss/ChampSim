@@ -1,0 +1,6 @@
+champsim_config_none.json
+champsim_config_berti.json
+champsim_config_isb.json
+champsim_config_spp.json
+champsim_config_triangel.json
+champsim_config_ipstride.json
