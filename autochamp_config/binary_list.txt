@@ -1,1 +1,6 @@
-champsim
+champsim_berti
+champsim_ipstride
+champsim_isb
+champsim_none
+champsim_spp
+champsim_triangel
