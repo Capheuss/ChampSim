@@ -3,4 +3,4 @@
 	url = https://github.com/Microsoft/vcpkg.git
 [submodule "autochamp"]
 	path = autochamp
-	url = https://github.com/ChampSim/autochamp.git
+	url = https://github.com/Capheuss/autochamp.git
