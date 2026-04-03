@@ -1,5 +1,5 @@
-#ifndef SPP_H
-#define SPP_H
+#ifndef BERTI_H
+#define BERTI_H
 
 #include <cstdint>
 #include <vector>

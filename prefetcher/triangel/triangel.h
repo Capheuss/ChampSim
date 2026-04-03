@@ -1,5 +1,5 @@
-#ifndef SPP_H
-#define SPP_H
+#ifndef TRIANGE_H
+#define TRIANGE_H
 
 #include <cstdint>
 #include <vector>

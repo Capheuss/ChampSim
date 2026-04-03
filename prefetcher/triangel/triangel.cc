@@ -1,4 +1,4 @@
-#include "spp_dev.h"
+#include "triangel.h"
 
 #include <cassert>
 #include <iostream>
