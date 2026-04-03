@@ -1,5 +1,5 @@
-#ifndef SPP_H
-#define SPP_H
+#ifndef PREFETCHER_SPP_DEV_H
+#define PREFETCHER_SPP_DEV_H
 
 #include <cstdint>
 #include <vector>

@@ -1,5 +1,5 @@
-#ifndef IP_STRIDE_H
-#define IP_STRIDE_H
+#ifndef PREFETCHER_IP_STRIDE_H
+#define PREFETCHER_IP_STRIDE_H
 
 #include <cstdint>
 #include <optional>
