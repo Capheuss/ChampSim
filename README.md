@@ -96,7 +96,7 @@ Note: instruction counts reflect the number of *retired* instructions. Statistic
 For launching multiple binaries across multiple workloads on Lonestar6, use AutoChamp:
 
 ```bash
-python3 autochamp/auto-champ.py -f autochamp/autochamp-config.cfg -l
+python3 autochamp/auto-champ.py -f autochamp_config/autochamp-config.cfg -l
 ```
 
 See the [AutoChamp README](https://github.com/Capheuss/autochamp/blob/main/README.md) for full setup and usage instructions.
