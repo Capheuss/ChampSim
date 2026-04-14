@@ -41,7 +41,7 @@
  *  - Opens/closes output files dynamically as instrCount enters/exits each window
  *  - instrCount is std::atomic<UINT64> for correct multi-thread counting
  *  - curr_instr is thread-local to prevent threads clobbering each other
- *  - PIN_Detach() called after the last window completes
+ *  - PIN_ExitApplication(0) called after the last window completes, killing
  */
 
  #include <algorithm>
@@ -171,11 +171,17 @@
      OpenWindow(next_window);
    }
  
-   // Detach once all windows are done
+   // Exit once all windows are done.
+   // Fini() will run before exit, closing all open files cleanly.
    if (next_window >= (int)windows.size() && current_window < 0) {
-     PIN_ReleaseLock(&write_lock);
-     std::cout << "[tracer] All simpoints captured — detaching PIN." << std::endl;
-     PIN_Detach();
+     bool expected = false;
+     if (detach_fired.compare_exchange_strong(expected, true)) {
+       PIN_ReleaseLock(&write_lock);
+       std::cout << "[tracer] All simpoints captured — exiting." << std::endl;
+       PIN_ExitApplication(0);
+     } else {
+       PIN_ReleaseLock(&write_lock);
+     }
      return FALSE;
    }
  
