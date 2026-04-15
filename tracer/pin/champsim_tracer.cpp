@@ -172,6 +172,8 @@
    }
  
    // Exit once all windows are done.
+   // Guard with atomic flag so only one thread calls PIN_ExitApplication()
+   // even when multiple threads hit this condition simultaneously.
    // Fini() will run before exit, closing all open files cleanly.
    if (next_window >= (int)windows.size() && current_window < 0) {
      bool expected = false;
@@ -348,11 +350,10 @@
      w.skip_end   = w.skip_start + trace_len - 1;
      w.sp_num     = sp_num;
      w.cluster_id = cluster_id;
-     // Output path — note: compression handled externally via named pipes
-     w.outpath = outdir + "/" + benchmark
-                 + "_sp" + std::to_string(sp_num)
-                 + "_cluster" + std::to_string(cluster_id)
-                 + ".champsimtrace.xz";  // raw binary written here; gen_champsim_traces.sh renames and compresses
+     // Output filename: <benchmark><skip_in_M>.champsimtrace.xz
+     // e.g. feedsim9800M.champsimtrace.xz for skip=9800000000
+     std::string skip_m = std::to_string(w.skip_start / 1000000) + "M";
+     w.outpath = outdir + "/" + benchmark + skip_m + ".champsimtrace.xz";
      windows.push_back(w);
      sp_num++;
    }
